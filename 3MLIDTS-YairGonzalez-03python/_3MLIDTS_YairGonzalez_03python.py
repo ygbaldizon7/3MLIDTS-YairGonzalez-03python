@@ -2,6 +2,7 @@
 ### Formulario de registro 
 ## almacenamiento en TXT sin validación
 import tkinter as tk
+from tkinter import messagebox
 ### Definición de funciones
 def limpiar_campos():
     tbNombre.delete(0,tk.END)
@@ -12,7 +13,6 @@ def limpiar_campos():
     var_genero.set(0)
 def borrar_fun():
     limpiar_campos()
-
 def guardar_valores():
     #Obtener valores desde los entrys
     nombres= tbNombre.get()
@@ -27,9 +27,18 @@ def guardar_valores():
     elif var_genero.get()==2:
         genero="Mujer"
     ### Generar la cadena de caracteres
-    datos = "Nombres: "+ nombres +"\n"+"Apellidos: "+ apellidos +"años\n"+"Edad: "+ edad +"años\n"+
-    "Estatura: "+ estatura +"\n"+"Telefonos :"+ telefono +"\n"+
-    "Genero: "+genero+"\n"
+    datos = "Nombres: "+ nombres +"\n"+"Apellidos: "+ apellidos +"\n"+"Edad: "+ edad +"años\n"+"Estatura: "+ estatura +"\n"+"Telefonos :"+ telefono +"\n"+"Genero: "+genero+"\n"
+    ## Guardar los datos en el archivo TXT
+    with open("3O2024Datos.txt", "a") as archivo:
+        archivo.write(datos+"\n\n")
+    ###Mostrar mensaje de confirmacón
+    messagebox.showinfo("Información", "Datos guardados con éxito: \n\n"+datos)
+    tbNombre.delete(0,tk.END)
+    tbApellidos.delete(0,tk.END)
+    tbEdad.delete(0,tk.END)
+    tbEstatura.delete(0,tk.END)
+    tbTelefono.delete(0,tk.END)
+    var_genero.set(0)
 
 ## Creación de Vetana
 ventana = tk.Tk()
@@ -68,8 +77,7 @@ rbMujer.pack()
 ##Creación de Botones
 btnBorrar = tk.Button(ventana, text = "Borrar valores", command=borrar_fun)
 btnBorrar.pack()
-btnGuardar = tk.Button(ventana, text = "Guardar")
+btnGuardar = tk.Button(ventana, text = "Guardar", command=guardar_valores)
 btnGuardar.pack()
 ## Ejecución de ventana
 ventana.mainloop()
-

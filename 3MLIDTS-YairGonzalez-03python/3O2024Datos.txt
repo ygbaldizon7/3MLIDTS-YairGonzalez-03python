@@ -1,0 +1,8 @@
+Nombres: Yair
+Apellidos: Gonzalez
+Edad: 65años
+Estatura: 1.50
+Telefonos :123123123
+Genero: Mujer
+
+
