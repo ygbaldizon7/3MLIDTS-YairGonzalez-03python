@@ -1,0 +1,8 @@
+Nombres: Yair
+Apellidos: Gonzalez M
+Edad: 55años
+Estatura: 1.30
+Telefonos :1234567890
+Genero: Hombre
+
+
